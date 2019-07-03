@@ -1,0 +1,11 @@
+*.swp
+*.pyc
+__pycache__
+*.pth
+*.png
+cache
+experiments
+runs
+*.txt
+dataset/trainset_result_yvos_152/*.json
+
