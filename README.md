@@ -1,10 +1,10 @@
 # Proposal, Tracking and Segmentation (PTS): A Cascaded Network for Video Object Segmentation
 By [Zilong Huang\*](http://speedinghzl.github.io), [Qiang Zhou\*](http://blog.hypotheses.cc), [Xinggang Wang](http://www.xinggangw.info/index.htm), [Shen Han](han.shen@horizon.ai), [Yongchao Gong](yongchao.gong@horizon.ai), [Lichao Huang](https://scholar.google.com/citations?user=F2e_jZMAAAAJ&hl=en), [Chang Huang](https://scholar.google.com/citations?user=IyyEKyIAAAAJ&hl=zh-CN), [Wenyu Liu](http://mclab.eic.hust.edu.cn/MCWebDisplay/PersonDetails.aspx?Name=Wenyu%20Liu).(\* means equal contribution)
 
-This code is a implementation of the experiments on DAVIS dataset. For more detail, please refer to our [paper]().
+This code is a implementation of the experiments on DAVIS dataset. For more detail, please refer to our [paper](https://arxiv.org/pdf/1907.01203).
 
 ## Architecture
-<div align='center'><img align="middle" src="./assets/overall_arch.jpg" width="60%" /><br></div>
+<div align='center'><img align="middle" src="./assets/overall_arch.jpg" width="90%" /><br></div>
 
 Overview of our proposed PTSNet for video object segmentation. **OPN** is designed for generating proposals of the interested objects and **OTN** aims to distinguish which one of the proposals is the best. Finally, **DRSN** does the final pixel level tracking(segmentation) task. Note in our implementation we couple **OPN** and **OTN** as a whole network, and spearate **DRSN** out under engineering consideration.
 
@@ -12,7 +12,7 @@ Overview of our proposed PTSNet for video object segmentation. **OPN** is design
 
 ### Preparation
 
-1. Install [PyTorch 0.4.1](https://github.com/pytorch/pytorch#installation) and necessary libraries like opencv, PIL etc.
+1. Install [PyTorch 0.4.1](https://github.com/pytorch/pytorch#installation) and necessary libraries like opencv, PIL etc. If there are many researchers being interested on PTSNet, we will re-implement the whole framework using PyTorch 1.0.1 or higher.
 
 2. There are some native CUDA implementations, **InPlace-ABN** and **MaskRCNN Operators**, which must be compiled at the very start.
 	```Bash
@@ -35,7 +35,7 @@ Overview of our proposed PTSNet for video object segmentation. **OPN** is design
 		# DRSN: wget "https://download.pytorch.org/models/resnet50-19c8e357.pth" -O drsn/init_models/resnet50-19c8e357.pth
 		# OPN: wget "https://s3-us-west-2.amazonaws.com/detectron/ImageNetPretrained/25093814/X-152-32x8d-IN5k.pkl" -O coupled_otn_opn/tracking/maskrcnn/data/X-152-32x8d-IN5k.pkl
 		# If you want to use our pretrained OTN:
-            https://drive.google.com/open?id=12bF1dRlEUZoQz3Qcr2WD3ojqNHzbCrjf, put it into `coupled_otn_opn/models/mdnet_davis_50cyche.pth`
+        #   wget https://drive.google.com/open?id=12bF1dRlEUZoQz3Qcr2WD3ojqNHzbCrjf, put it into `coupled_otn_opn/models/mdnet_davis_50cyche.pth`
 		# Else please modify from py-MDNet(https://github.com/HyeonseobNam/py-MDNet) to train OTN on DAVIS by yourself.
 		```
 	- If you want to use our pretrained model to do the evaluation, you need to download:
@@ -88,8 +88,6 @@ Overview of our proposed PTSNet for video object segmentation. **OPN** is design
 |        | J Mean | F Mean | G Mean |
 |:------:|:------:|:------:|:------:|
 | Avg    | 71.6   | 77.7   | 74.7  |
-
-; | Peak   | 72.4   | 78.7   | 75.6  |
 
 
 ## Acknowledgment
