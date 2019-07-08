@@ -33,7 +33,7 @@ Overview of our proposed PTSNet for video object segmentation. **OPN** is design
 
 		```Bash
 		# DRSN: wget "https://download.pytorch.org/models/resnet50-19c8e357.pth" -O drsn/init_models/resnet50-19c8e357.pth
-		# OPN: wget "https://s3-us-west-2.amazonaws.com/detectron/ImageNetPretrained/25093814/X-152-32x8d-IN5k.pkl" -O coupled_otn_opn/tracking/maskrcnn/data/X-152-32x8d-IN5k.pkl
+		# OPN: wget "https://drive.google.com/open?id=1ma1fNmEvS9dJLOIcm1FRzYofVS_t3aI3" -O coupled_otn_opn/tracking/maskrcnn/data/X-152-32x8d-IN5k.pkl
 		# If you want to use our pretrained OTN:
         #   wget https://drive.google.com/open?id=12bF1dRlEUZoQz3Qcr2WD3ojqNHzbCrjf, put it into `coupled_otn_opn/models/mdnet_davis_50cyche.pth`
 		# Else please modify from py-MDNet(https://github.com/HyeonseobNam/py-MDNet) to train OTN on DAVIS by yourself.
@@ -42,7 +42,7 @@ Overview of our proposed PTSNet for video object segmentation. **OPN** is design
 
 		```Bash
 		# DRSN: https://drive.google.com/open?id=116yXnqX43BZ7kEgdzUhIeTSn1dbvcE2F, put it into `drsn/snapshots/drsn_yvos_10w_davis_3p5w.pth`
-		# OPN: wget "https://s3-us-west-2.amazonaws.com/detectron/ImageNetPretrained/25093814/X-152-32x8d-IN5k.pkl" -O coupled_otn_opn/tracking/maskrcnn/data/X-152-32x8d-IN5k.pkl
+		# OPN: wget "https://drive.google.com/open?id=1ma1fNmEvS9dJLOIcm1FRzYofVS_t3aI3" -O coupled_otn_opn/tracking/maskrcnn/data/X-152-32x8d-IN5k.pkl
 		# OTN: https://drive.google.com/open?id=12bF1dRlEUZoQz3Qcr2WD3ojqNHzbCrjf, put it into `coupled_otn_opn/models/mdnet_davis_50cycle.pth`
 		```
 
