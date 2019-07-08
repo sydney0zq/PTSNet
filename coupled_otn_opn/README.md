@@ -8,7 +8,7 @@ This directory contains code for generating coarse positions for each interested
 
 0. Prepare your dataset in `DAVIS/trainval` as described in the main page
 
-1. Firstly, download the pretrained Object Tracking Network(OTN) and off-the-shelf Object Proposal Network(OPN) models from [OTN-GoogleDrive](https://drive.google.com/open?id=12bF1dRlEUZoQz3Qcr2WD3ojqNHzbCrjf) and [OPN-AmazonAWS](https://s3-us-west-2.amazonaws.com/detectron/ImageNetPretrained/25093814/X-152-32x8d-IN5k.pkl) respectively. Then put them into `models` and `tracking/maskrcnn/data` folders
+1. Firstly, download the pretrained Object Tracking Network(OTN) and off-the-shelf Object Proposal Network(OPN) models from [OTN-GoogleDrive](https://drive.google.com/open?id=12bF1dRlEUZoQz3Qcr2WD3ojqNHzbCrjf) and [OPN-AmazonAWS](https://drive.google.com/open?id=1ma1fNmEvS9dJLOIcm1FRzYofVS_t3aI3) respectively. Then put them into `models` and `tracking/maskrcnn/data` folders
 
 2. If you have only one GPU card (GPUMemory > 6GB), you could simply run `python3 serial_infer.py val` to inference the whole validation set. Alternatively if you have multi-GPU cards, you could consider to exploit `local_run.sh` to speed up a lot. (Parallel)
 
