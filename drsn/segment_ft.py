@@ -22,6 +22,7 @@ cv2.ocl.setUseOpenCL(False)
 warnings.filterwarnings('ignore')
 import torch.backends.cudnn as cudnn
 cudnn.enabled = cudnn.benchmark = True
+from utils.criterion import Criterion2
 
 class SeqResMemory:
     def __init__(self):
@@ -173,7 +174,7 @@ class SegWorker:
         label_ids = davis.get_label_ids(vdname)
         os.makedirs(mask_home, exist_ok=True)
         for label_id in label_ids:
-            self.model.init(self.whole_model_path)
+            self.model.init(self.whole_model_path, stage='test')
             self.logger.info("[Segmentation] Start to ft vd {} label_id {}".format(vdname, label_id))
             self.ft(vdname, label_id)
             self.logger.info("[Segmentation] Start to track vd {} label_ids {}".format(vdname, label_ids))
@@ -211,7 +212,8 @@ if __name__ == "__main__":
         dist_id = 'val'
     else:
         assert False, "Params not enough..."
-    dist_vdname = readvdnames(os.path.join('dist', 'dist_{}'.format(dist_id)))
+    readvdnames = lambda x: open(x).read().rstrip().split('\n')
+    dist_vdnames = readvdnames(os.path.join('dist', 'dist_{}'.format(dist_id)))
 
     segworker = SegWorker()
     segworker.ft_lr = float(sys.argv[1])
