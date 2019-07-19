@@ -19,15 +19,16 @@ Overview of our proposed PTSNet for video object segmentation. **OPN** is design
 	# Before you compile, you need to figure out several things:
 	# - The CUDA kernels supported by your GPU, here we use `sm_52`, `sm_61` and `sm_70` for NVIDIA Titan V.
 	# - `cuda` and `nvcc` paths in your operating system, which exist usually in `/usr/local/cuda` and `/usr/local/cuda/bin/nvcc` respectively.
-	# InPlace-ABN_0.4   (Pytorch 0.4 supported)
-	cd model/inplace_ABN
+	# InPlace-ABN_0.4   (PyTorch 0.4)
+	cd model/inplace_ABN_0.4
 	bash build.sh
-	python3 build.py
-	# MaskRCNN Operators
+    # OR you could choose the 1.0 version of inplace ABN.
+    # InPlace-ABN_1.0   (PyTorch 1.0)
+    cd model/inplace_ABN    # It is dynamically compiled when running (gcc > 4.9)
+
+	# MaskRCNN Operators (PyTorch 0.4)
 	cd coupled_otn_opn/tracking/maskrcnn/lib
 	bash make.sh
-    # InPlace-ABN_1.0
-    # Dynamic compiled, please check in drsn/model/inplace_ABN
 	```
 
 3. You can train PTSNet from scratch or just evaluate our pretrained model.
