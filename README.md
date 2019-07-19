@@ -1,7 +1,7 @@
 # Proposal, Tracking and Segmentation (PTS): A Cascaded Network for Video Object Segmentation
 By [Qiang Zhou\*](http://blog.hypotheses.cc), [Zilong Huang\*](http://speedinghzl.github.io), [Lichao Huang](https://scholar.google.com/citations?user=F2e_jZMAAAAJ&hl=en), [Shen Han](han.shen@horizon.ai), [Yongchao Gong](yongchao.gong@horizon.ai), [Chang Huang](https://scholar.google.com/citations?user=IyyEKyIAAAAJ&hl=zh-CN), [Wenyu Liu](http://mclab.eic.hust.edu.cn/MCWebDisplay/PersonDetails.aspx?Name=Wenyu%20Liu), [Xinggang Wang](http://www.xinggangw.info/index.htm).(\* means equal contribution)
 
-This code is a implementation of the experiments on DAVIS dataset. For more detail, please refer to our [paper](https://arxiv.org/abs/1907.01203).
+This code is the implementation mainly for DAVIS 2017 dataset. For more detail, please refer to our [paper](https://arxiv.org/abs/1907.01203).
 
 ## Architecture
 <div align='center'><img align="middle" src="./assets/overall_arch.jpg" width="90%" /><br></div>
