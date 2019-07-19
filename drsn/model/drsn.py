@@ -237,12 +237,9 @@ class DRSN(nn.Module):
             assert False, 'Stage {} not recognized...'.format(stage)
 
 
-
-
-
 if __name__ == "__main__":
     test = DRSN()
-    test.init('../models/resnet50-19c8e357.pth')
+    test.init('../init_models/resnet50-19c8e357.pth')
     #x = torch.ones((1, 4, 256, 256)).type(torch.cuda.FloatTensor)
     #test.cuda()
     #test(x, x, x, x)

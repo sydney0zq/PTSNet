@@ -26,11 +26,7 @@ import random
 import time
 import logging
 from tensorboardX import SummaryWriter
-from utils.util import decode_labels, inv_preprocess, decode_predictions
 from utils.criterion import Criterion, Criterion2
-from utils.model_init import init
-from utils.learning_policy import adjust_learning_rate
-from utils.parallel import SelfDataParallel, ModelDataParallel, CriterionDataParallel
 from logger.logger import setup_logger
 import warnings
 warnings.filterwarnings('ignore')
@@ -38,7 +34,7 @@ CURR_DIR = os.path.dirname(__file__)
 
 IMG_MEAN = np.array((104, 117, 123), dtype=np.float32)
 sec2hm = lambda sec: [sec//3600, (sec%3600)//60]     # Seconds to hours and minutes
-
+cudnn.enabled = cudnn.benchmark = True
 
 def get_arguments():
     parser = argparse.ArgumentParser()
@@ -125,10 +121,7 @@ def main():
 
     """Create the model and start the training."""
     logger = setup_logger()
-    if os.environ['HOSTNAME'] != 'train119.hogpu.cc':
-        writer = SummaryWriter(os.path.join("/job_tboard"))
-    else:
-        writer = SummaryWriter(args.model_save_path)
+    writer = SummaryWriter(args.model_save_path)
     logger.info(json.dumps(vars(args), indent=1))
 
     logger.info('Setting model...')
@@ -136,19 +129,12 @@ def main():
     model.init(args.init_model_path, "yvos_train")
     model.train()
     model.float()
-    model = torch.nn.DataParallel(model)
-    model.cuda()    
+    model = torch.nn.DataParallel(model.cuda())
     #print(model)
     logger.info('Setting criterion...')
-    criterion = Criterion2()       # For softmax
-    criterion.cuda()
-    #criterion = Criterion()         # For sigmoid
-    #criterion = CriterionDataParallel(criterion)
+    criterion = Criterion2().cuda()       # For softmax
 
-    # Set CUDNN and GPU associated
-    logger.info('Setting CUDNN...')
-    cudnn.enabled = cudnn.benchmark = True
-    os.path.exists(args.model_save_path) or os.makedirs(args.model_save_path)
+    os.makedirs(args.model_save_path, exist_ok=True)
 
     trainset = YVOSDataset(args.img_size)
     trainset.data_len = args.max_iters * args.batch_size
