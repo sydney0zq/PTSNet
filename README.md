@@ -100,9 +100,9 @@ The work was mainly done during an internship at [Horizon Robotics](http://horiz
 
 If you find PTSNet useful in your research, please consider citing:
 
-    @article{huang2018ccnet,
+    @article{ptsnet2019,
             title={Proposal, Tracking and Segmentation (PTS): A Cascaded Network for Video Object Segmentation},
-            author={Zhou, Qiang* and Huang, Zilong* and Huang, Lichao and Han, Shen and Gong, Yongchao and Huang, Chang and Liu, Wenyu and Wang, Xinggang},
+            author={Zhou, Qiang and Huang, Zilong and Huang, Lichao and Han, Shen and Gong, Yongchao and Huang, Chang and Liu, Wenyu and Wang, Xinggang},
             journal = {arXiv preprint arXiv:1907.01203v2},
             year={2019}
             }
