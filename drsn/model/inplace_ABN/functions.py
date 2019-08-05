@@ -8,10 +8,12 @@ from torch.autograd.function import once_differentiable
 from torch.utils.cpp_extension import load
 
 curr_dir = path.dirname(path.abspath(__file__))
+build_dir = os.path.join(curr_dir, "build")
+os.makedirs(build_dir, exist_ok=True)
 _src_path = path.join(curr_dir, "src")
 _backend = load(name="inplace_abn",
                 extra_cflags=["-O3"],
-                build_directory=os.path.join(curr_dir, "build"),
+                build_directory=build_dir,
                 verbose=False,
                 sources=[path.join(_src_path, f) for f in [
                     "inplace_abn.cpp",
