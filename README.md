@@ -8,6 +8,19 @@ This code is the implementation mainly for DAVIS 2017 dataset. For more detail, 
 
 Overview of our proposed PTSNet for video object segmentation. **OPN** is designed for generating proposals of the interested objects and **OTN** aims to distinguish which one of the proposals is the best. Finally, **DRSN** does the final pixel level tracking(segmentation) task. Note in our implementation we couple **OPN** and **OTN** as a whole network, and spearate **DRSN** out under engineering consideration.
 
+<table>
+<tr>
+    <td><center><img src="./assets/bike-packing.gif"></center></td>
+    <td ><center><img src="./assets/bmx-trees.gif"></center></td>
+    <td ><center><img src="./assets/camel.gif"></center></td>
+</tr>
+<tr>
+    <td><center><img src="./assets/drift-chicane.gif"></center></td>
+    <td ><center><img src="./assets/horsejump-high.gif"></center></td>
+    <td ><center><img src="./assets/motocross-jump.gif"></center></td>
+</tr>
+</table>
+
 ## Usage
 
 ### Preparation
