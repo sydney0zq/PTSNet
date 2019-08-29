@@ -12,10 +12,10 @@ exit
 PYTHON_EXE=python3
 
 # Train on YouTube-VOS
-CUDA_VISIBLE_DEVICES=0,1,2,3 $PYTHON_EXE train.py --model_save_path experiments/snapshots --max_iters 100000 --decayat 60000 --learning_rate 2e-5 --batch_size 64 --input_size 256,256
+CUDA_VISIBLE_DEVICES=0,1,2,3 $PYTHON_EXE train.py --model_save_path experiments/snapshots --max_iters 100000 --decayat 60000 --learning_rate 2e-5 --batch_size 64 --img_size 256,256
 
 # Adapt training on DAVIS
-CUDA_VISIBLE_DEVICES=0,1,2,3 $PYTHON_EXE train_adapt_davis.py --seg_model_path experiments/snapshots/drsn_100000.pth --steps 25000 --lr_s1 2e-7 --steps_s2 10000 --lr_s2 2e-8
+CUDA_VISIBLE_DEVICES=0,1,2,3 $PYTHON_EXE train_adapt_davis.py --seg_model_path experiments/snapshots/drsn_100000.pth --steps 25000 --lr_s1 2e-7 --steps_s2 10000 --lr_s2 2e-8 --img_size 256,256
 
 # Move to snapshot directory
 mv experiments/stage2/drsn_davis_10000.pth snapshots/drsn_yvos_10w_davis_3p5w.pth

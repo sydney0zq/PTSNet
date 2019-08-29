@@ -49,7 +49,7 @@ def get_arguments():
             default="experiments", 
             help='Path to save models')
     parser.add_argument(
-            '--im_size',
+            '--img_size',
             nargs=2, type=int,
             required = False,
             default=[256, 256],
@@ -185,9 +185,9 @@ def main():
     os.makedirs(args.model_save_path, exist_ok=True)
     [os.makedirs(os.path.join(args.model_save_path, x), exist_ok=True) for x in ['stage1', 'stage2']]
 
-    trainset_s1 = DAVISDataSet(split='train', img_size=args.im_size, stage='stage1')
+    trainset_s1 = DAVISDataSet(split='train', img_size=args.img_size, stage='stage1')
     trainset_s1.data_len = args.steps_s1 * args.batch_size
-    trainset_s2 = DAVISDataSet(split='train', img_size=args.im_size, stage='stage2')
+    trainset_s2 = DAVISDataSet(split='train', img_size=args.img_size, stage='stage2')
     trainset_s2.data_len = args.steps_s2 * args.batch_size
     trainloader_s1 = data.DataLoader(trainset_s1, batch_size=args.batch_size, shuffle=True, num_workers=args.batch_size//2+1, pin_memory=True)
     trainloader_s2 = data.DataLoader(trainset_s2, batch_size=args.batch_size, shuffle=True, num_workers=args.batch_size//2+1, pin_memory=True)
